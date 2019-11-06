@@ -1,4 +1,5 @@
 package com.example.canvas_prueba;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -15,8 +15,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     private EditText txtMail;
     private EditText txtPass;
@@ -26,14 +27,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
+
         fireBaseAuth = FirebaseAuth.getInstance();
         txtMail = (EditText)findViewById(R.id.txtMail);
         txtPass = (EditText) findViewById(R.id.txtPassword);
         progressDialog = new ProgressDialog(this);
     }
 
-    public void Registrar(View view){
+    public void Ingresar(View view){
 
         String email = txtMail.getText().toString().trim();
         String password = txtPass.getText().toString().trim();
@@ -48,32 +50,27 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        progressDialog.setMessage("Realizando registro en liena...");
-        progressDialog.show();
-
-        fireBaseAuth.createUserWithEmailAndPassword(email, password)
+        fireBaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(MainActivity.this, "Se a registrado el usuario", Toast.LENGTH_SHORT).show();
-                            Intent ok = new Intent(MainActivity.this, Tareas.class);
+                            // Sign in success, update UI with the signed-in user's information
+                            Toast.makeText(Login.this, "Se a registrado el usuario", Toast.LENGTH_SHORT).show();
+                            Intent ok = new Intent(Login.this, Tareas.class);
                             startActivity(ok);
 
                         } else {
-                            Toast.makeText(MainActivity.this, "Registro invalido", Toast.LENGTH_SHORT).show();
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(Login.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+
                         }
 
-                        progressDialog.dismiss();
+                        // ...
                     }
                 });
-    }
-
-    public void Login(View v){
-        Intent ok = new Intent(MainActivity.this, Login.class);
-        startActivity(ok);
 
     }
+
 }
-
-

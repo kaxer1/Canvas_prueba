@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "590116912055",
+    "firebase_url": "https://canvasprueba-6d4b1.firebaseio.com",
+    "project_id": "canvasprueba-6d4b1",
+    "storage_bucket": "canvasprueba-6d4b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590116912055:android:de019afe69976fb5bfc632",
+        "android_client_info": {
+          "package_name": "com.example.canvas_prueba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590116912055-d0n558si95dcdj8pd9fu5104lkbsln8c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.canvas_prueba",
+            "certificate_hash": "90fb4525b32e044573a6f456a7b3638fd5e8b354"
+          }
+        },
+        {
+          "client_id": "590116912055-7vnti5tn0lra7grb65i442n9ep8l3cha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQQH2nJq9CQvfApBlLPP8-jTTvfcSbmPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590116912055-7vnti5tn0lra7grb65i442n9ep8l3cha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
